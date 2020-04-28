@@ -25,9 +25,28 @@ class PostControl extends React.Component {
 
   handleDeselectPost = () => {
     // deselect currently selected post
+    const { dispatch } = this.props;
+    const post = this.props.masterPostList[id];
+    const action = {
+      type: "SET_POST",
+      payload: null,
+    };
+    dispatch(action);
   };
 
+  handleShowPostDetail = (id) => {
+    const { dispatch } = this.props;
+    const post = this.props.masterPostList[id];
+    const action = {
+      type: "SET_POST",
+      payload: post,
+    };
+    dispatch(action);
+  };
+
+  //form submit
   handleAddPost = (newPost) => {
+    //this is the function to access the store
     const { dispatch } = this.props;
     const action = {
       type: "ADD_POST",
@@ -38,16 +57,27 @@ class PostControl extends React.Component {
     //make sure to dispatch to reducer for addpostform visibility
   };
 
-  handleEditPost = (editPost) => {
+  // this is passed as a callback to the edit post form, and triggered on "submit"
+  handleEditPost = (editedPost) => {
     const { dispatch } = this.props;
     const action = {
       type: "EDIT_POST",
-      payload: editPost,
+      payload: editedPost,
     };
     dispatch(action);
 
     // make sure to dispact another action to set editing state to false
   };
+
+  handleDeletePost = (id) => {
+    const { dispatch } = this.props;
+    const action = {
+      type: "DELETE_POST",
+      payload: id,
+    };
+    dispatch(action);
+  };
+
   setVisibleComponent = () => {
     if (this.props.editPostFormVisibleOnPage) {
       return {

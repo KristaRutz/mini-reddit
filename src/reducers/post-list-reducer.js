@@ -12,53 +12,33 @@
 // },
 
 export function postListReducer(state = {}, action) {
-  const {
-    id,
-    author,
-    text,
-    title,
-    subReddit,
-    subRedditImage,
-    upVotes,
-    timeCreated,
-    imageUrl,
-  } = action;
-
+  // const {
+  //   id,
+  //   author,
+  //   text,
+  //   title,
+  //   subReddit,
+  //   subRedditImage,
+  //   upVotes,
+  //   timeCreated,
+  //   imageUrl,
+  // } = action;
+  const { payload } = action;
   let newState = null;
   switch (action.type) {
     case "ADD_POST":
       return {
         ...state,
-        [id]: {
-          id: id,
-          title: title,
-          author: author,
-          subReddit: subReddit,
-          subRedditImage: subRedditImage,
-          image: image,
-          text: text,
-          upVotes: upVotes,
-          timeCreated: timeCreated,
-        },
+        [payload.id]: payload,
       };
-    //
     case "EDIT_POST":
       const newStateUpdate = {
         ...state,
-        [id]: {
-          id: id,
-          title: title,
-          author: author,
-          subReddit: subReddit,
-          text: text,
-          upVotes: upVotes,
-          timeCreated: timeCreated,
-          imageUrl: imageUrl,
-        },
+        [payload.id]: payload,
       };
     case "DELETE_POST":
       newState = { ...state };
-      delete newState[id];
+      delete newState[payload.id];
       return newState;
     default:
       return state;

@@ -1,18 +1,11 @@
-export function selectedPostReducer(state = {}, action) {
-  const {
-    id,
-    author,
-    text,
-    title,
-    subReddit,
-    subRedditImage,
-    upVotes,
-    timeCreated,
-    imageUrl,
-  } = action;
-  let newState = null;
+export function selectedPostReducer(state = null, action) {
   switch (action.type) {
-    case "GET_POST":
-      return;
+    // case "GET_POST":
+    //   return action.payload;
+    case "SET_POST": {
+      return action.payload;
+    }
+    default:
+      return null;
   }
 }
