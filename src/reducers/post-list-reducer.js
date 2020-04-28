@@ -1,3 +1,5 @@
+import InitialState from "../components/InitialState";
+
 export default (state = {}, action) => {
   // const {
   //   id,

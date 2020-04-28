@@ -6,7 +6,7 @@ import * as serviceWorker from "./serviceWorker";
 import { Provider } from "react-redux";
 import { createStore } from "redux";
 import rootReducer from "./reducers/index";
-import initialState from "./components/IntialState";
+import initialState from "./components/InitialState";
 
 const store = createStore(rootReducer, initialState);
 

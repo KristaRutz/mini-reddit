@@ -102,7 +102,7 @@ class PostControl extends React.Component {
       };
     } else {
       return {
-        component: <PostList />,
+        component: <PostList masterPostList={this.props.masterPostList} />,
         buttonText: "New Post",
         buttonFunc: this.handleShowNewPostForm,
       };
