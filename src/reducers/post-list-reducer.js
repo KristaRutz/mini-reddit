@@ -23,6 +23,7 @@ export function postListReducer(state = {}, action) {
     timeCreated,
     imageUrl,
   } = action;
+
   let newState = null;
   switch (action.type) {
     case "ADD_POST":
@@ -33,16 +34,19 @@ export function postListReducer(state = {}, action) {
           title: title,
           author: author,
           subReddit: subReddit,
+          subRedditImage: subRedditImage,
+          image: image,
           text: text,
           upVotes: upVotes,
           timeCreated: timeCreated,
         },
       };
+    //
     case "EDIT_POST":
       const newStateUpdate = {
         ...state,
         [id]: {
-          ...state[id],
+          id: id,
           title: title,
           author: author,
           subReddit: subReddit,
@@ -52,6 +56,10 @@ export function postListReducer(state = {}, action) {
           imageUrl: imageUrl,
         },
       };
+    case "DELETE_POST":
+      newState = { ...state };
+      delete newState[id];
+      return newState;
     default:
       return state;
   }
