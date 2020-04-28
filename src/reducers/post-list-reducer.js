@@ -30,6 +30,10 @@ export default (state = {}, action) => {
       newState = { ...state };
       newState[payload]["upVotes"] += 1;
       return newState;
+    case "DECREMENT_UPVOTE":
+      newState = { ...state };
+      newState[payload]["upVotes"] -= 1;
+      return newState;
     case "DELETE_POST":
       newState = { ...state };
       delete newState[payload.id];

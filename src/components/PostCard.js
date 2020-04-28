@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 function PostCard(props) {
-  const { post, onSelectPost, onIncrementUpVote } = props;
+  const { post, onSelectPost, onIncrementUpVote, onDecrementUpVote } = props;
 
   const postCardStyle = {
     background: "#efefef",
@@ -13,14 +13,11 @@ function PostCard(props) {
     maxWidth: 30,
   };
 
-  function handleSelectPost() {
-    onSelectPost(post.id);
-  }
   return (
     <div style={postCardStyle}>
       <img style={imageStyle} src={post.subRedditImage} />
       <h4>{post.subReddit}</h4>
-      <div onClick={handleSelectPost}>
+      <div onClick={() => onSelectPost(post.id)}>
         <h3>{post.title}</h3>
       </div>
       <h5>
@@ -30,7 +27,7 @@ function PostCard(props) {
       <div>
         <button onClick={() => onIncrementUpVote(post.id)}>+</button>
         <span>{post.upVotes}</span>
-        <button onClick={() => console.log()}>-</button>
+        <button onClick={() => onDecrementUpVote(post.id)}>-</button>
       </div>
     </div>
   );
@@ -40,5 +37,6 @@ PostCard.propTypes = {
   post: PropTypes.object,
   onSelectPost: PropTypes.func,
   onIncrementUpVote: PropTypes.func,
+  onDecrementUpVote: PropTypes.func,
 };
 export default PostCard;

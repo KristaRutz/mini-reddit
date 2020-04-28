@@ -33,16 +33,15 @@ class PostControl extends React.Component {
     // const { dispatch } = this.props;
   };
 
-  handleCancelEdit = () => {
-    // set state of editing to false
+  handleToggleEditPostForm = () => {
+    this.props.dispatch({
+      type: "TOGGLE_EDIT",
+    });
   };
 
-  handleCancelAddPost = () => {
-    // set state of adding new post to false
-  };
-
-  handleShowNewPostForm = () => {
+  handleToggleNewPostForm = () => {
     // set state of new post form visible to true
+    this.props.dispatch({ type: "TOGGLE_ADD" });
   };
 
   handleDeselectPost = () => {
@@ -104,11 +103,17 @@ class PostControl extends React.Component {
       return {
         component: <EditPostForm onEditPost={this.handleEditPost} />,
         buttonText: "Cancel",
-        buttonFunc: this.handleCancelEdit,
+        buttonFunc: this.handleToggleEditPostForm,
       };
     } else if (this.props.selectedPost != null) {
       return {
-        component: <PostDetail post={this.props.selectedPost} />,
+        component: (
+          <PostDetail
+            post={this.props.selectedPost}
+            onEditClick={this.handleToggleEditPostForm}
+            onDeleteClick={this.handleDeletePost}
+          />
+        ),
         buttonText: "Back to feed",
         buttonFunc: this.handleDeselectPost,
       };
@@ -116,18 +121,20 @@ class PostControl extends React.Component {
       return {
         component: <AddPostForm onAddPost={this.handleAddPost} />,
         buttonText: "Cancel",
-        buttonFunc: this.handleCancelAddPost,
+        buttonFunc: this.handleToggleNewPostForm,
       };
     } else {
       return {
         component: (
           <PostList
             onIncrementUpVote={this.handleIncrementUpVote}
+            onDecrementUpVote={this.handleDecrementUpVote}
+            onSelectPost={this.handleShowPostDetail}
             masterPostList={this.props.masterPostList}
           />
         ),
         buttonText: "New Post",
-        buttonFunc: this.handleShowNewPostForm,
+        buttonFunc: this.handleToggleNewPostForm,
       };
     }
   };
