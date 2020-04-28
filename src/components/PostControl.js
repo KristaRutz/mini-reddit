@@ -11,6 +11,24 @@ class PostControl extends React.Component {
     super(props);
   }
 
+  handleIncrementUpVote = (id) => {
+    const { dispatch } = this.props;
+    const action = {
+      type: "INCREMENT_UPVOTE",
+      payload: id,
+    };
+    dispatch(action);
+  };
+
+  handleDecrementUpVote = (id) => {
+    const { dispatch } = this.props;
+    const action = {
+      type: "DECREMENT_UPVOTE",
+      payload: id,
+    };
+    dispatch(action);
+  };
+
   handlePostList = () => {
     // const { dispatch } = this.props;
   };
@@ -102,7 +120,12 @@ class PostControl extends React.Component {
       };
     } else {
       return {
-        component: <PostList masterPostList={this.props.masterPostList} />,
+        component: (
+          <PostList
+            onIncrementUpVote={this.handleIncrementUpVote}
+            masterPostList={this.props.masterPostList}
+          />
+        ),
         buttonText: "New Post",
         buttonFunc: this.handleShowNewPostForm,
       };

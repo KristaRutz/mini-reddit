@@ -1,17 +1,17 @@
 import InitialState from "../components/InitialState";
 
 export default (state = {}, action) => {
-  // const {
-  //   id,
-  //   author,
-  //   text,
-  //   title,
-  //   subReddit,
-  //   subRedditImage,
-  //   upVotes,
-  //   timeCreated,
-  //   imageUrl,
-  // } = action;
+  const {
+    id,
+    author,
+    text,
+    title,
+    subReddit,
+    subRedditImage,
+    upVotes,
+    timeCreated,
+    imageUrl,
+  } = action;
   const { payload } = action;
   let newState = null;
   switch (action.type) {
@@ -26,6 +26,10 @@ export default (state = {}, action) => {
         [payload.id]: payload,
       };
       return newStateUpdate;
+    case "INCREMENT_UPVOTE":
+      newState = { ...state };
+      newState[payload]["upVotes"] += 1;
+      return newState;
     case "DELETE_POST":
       newState = { ...state };
       delete newState[payload.id];
