@@ -1,6 +1,30 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# [Mini Reddit]()
 
-## Available Scripts
+#### _React Application with full CRUD Functionality, 04.28.2020_
+
+#### By _**Krista Rutz, Andrew Philpott, Steven Fleming**_
+
+<!-- [![Project Status: Inactive – The project has reached a stable, usable state but is no longer being actively developed; support/maintenance will be provided as time allows.](https://www.repostatus.org/badges/latest/inactive.svg)](https://www.repostatus.org/#inactive) -->
+
+![LastCommit](https://img.shields.io/github/last-commit/KristaRutz/mini-reddit)
+![Languages](https://img.shields.io/github/languages/top/KristaRutz/mini-reddit)
+[![MIT license](https://img.shields.io/badge/License-MIT-orange.svg)](https://lbesson.mit-license.org/)
+
+## Project Overview
+
+Sites like Reddit, HackerNews and others offer a collection of different pages or forums where users may post news, pictures, and other information around a certain topic. Other users can then upvote or downvote content. The more upvotes an item receives, the higher it's displayed on the list. Recreate a basic subreddit and/or vote-based discussion board using React and Redux. Here are some user stories to get you started:
+
+As a user, I want to enter content into a form and submit to create a new post.
+As a user, I want my new posts to include a timestamp. And I want to see when other listings were posted, too.
+As a user, I want to upvote posts I particularly enjoy.
+As a user, I want to downvote posts I don't like, or find inappropriate.
+As a user, I'd like posts with the most upvotes to appear higher on the page. (We haven't explicitly covered this in our curriculum, but here's a hint: You can complete logic before the return statement of a mapStateToProps() method!)
+
+---
+
+### Component Diagram
+
+![Component Diagram](./component-diagram.png)
 
 In the project directory, you can run:
 
@@ -65,4 +89,4 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 
 ### `npm run build` fails to minify
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minifyThis section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
