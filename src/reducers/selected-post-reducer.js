@@ -1,4 +1,4 @@
-export function selectedPostReducer(state = null, action) {
+export default (state = null, action) => {
   switch (action.type) {
     // case "GET_POST":
     //   return action.payload;
@@ -8,4 +8,4 @@ export function selectedPostReducer(state = null, action) {
     default:
       return null;
   }
-}
+};

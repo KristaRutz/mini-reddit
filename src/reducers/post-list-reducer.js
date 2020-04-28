@@ -1,17 +1,4 @@
-// [id2]: {
-//   author: "Rowling J.K.",
-//   title: "ThIs Is A tItLe",
-//   text: "eXaMpLe StRiNg",
-//   imageUrl: "https://lokeshdhakar.com/projects/lightbox2/images/image-5.jpg",
-//   subreddit: "memes",
-//   subRedditImage:
-//     "https://lokeshdhakar.com/projects/lightbox2/images/image-5.jpg",
-//   upVotes: 167,
-//   timeCreated: new Date(),
-//   id: id2,
-// },
-
-export function postListReducer(state = {}, action) {
+export default (state = {}, action) => {
   // const {
   //   id,
   //   author,
@@ -36,6 +23,7 @@ export function postListReducer(state = {}, action) {
         ...state,
         [payload.id]: payload,
       };
+      return newStateUpdate;
     case "DELETE_POST":
       newState = { ...state };
       delete newState[payload.id];
@@ -43,4 +31,4 @@ export function postListReducer(state = {}, action) {
     default:
       return state;
   }
-}
+};

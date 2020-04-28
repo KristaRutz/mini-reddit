@@ -1,6 +1,10 @@
 import React from "react";
 import AddPostForm from "./AddPostForm";
 import EditPostForm from "./EditPostForm";
+import PostDetail from "./PostDetail";
+import PostList from "./PostList";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
 class PostControl extends React.Component {
   constructor(props) {
@@ -8,7 +12,7 @@ class PostControl extends React.Component {
   }
 
   handlePostList = () => {
-    const { dispatch } = this.props;
+    // const { dispatch } = this.props;
   };
 
   handleCancelEdit = () => {
@@ -26,7 +30,6 @@ class PostControl extends React.Component {
   handleDeselectPost = () => {
     // deselect currently selected post
     const { dispatch } = this.props;
-    const post = this.props.masterPostList[id];
     const action = {
       type: "SET_POST",
       payload: null,
@@ -107,13 +110,13 @@ class PostControl extends React.Component {
   };
 
   render() {
-    let currentlyVisibleState = setVisibleComponent();
+    let currentlyVisibleState = this.setVisibleComponent();
     return (
       <>
         <button onClick={currentlyVisibleState.buttonFunc}>
           {currentlyVisibleState.buttonText}
         </button>
-        {currentlyVisibleState.component};
+        {currentlyVisibleState.component}
       </>
     );
   }
