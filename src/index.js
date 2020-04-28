@@ -8,7 +8,11 @@ import { createStore } from "redux";
 import rootReducer from "./reducers/index";
 import initialState from "./components/InitialState";
 
-const store = createStore(rootReducer, initialState);
+const store = createStore(
+  rootReducer,
+  initialState,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
 
 store.subscribe(() => console.log(store.getState()));
 
